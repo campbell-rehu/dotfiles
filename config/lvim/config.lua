@@ -39,6 +39,7 @@ lvim.colorscheme = "catppuccin-macchiato"
 formatters.setup({
 	{ name = "stylua" },
 	{ name = "prettier" },
+	{ name = "beautysh" },
 })
 
 lvim.format_on_save.enabled = true
