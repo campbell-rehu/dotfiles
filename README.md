@@ -12,5 +12,13 @@ Repository for storing my configuration dotfiles
 
 # How to use
 
+```bash
+./setup.sh [dryRun] # optionally pass the dryRun argument to verify the changes before actually running it
+```
+
+Note: the script will overwrite any existing config you have in the `~/.config` directory for the above tools.
+
+## Manually
 1. Clone the repo
-2. Copy the contents of the repo to the `~/.config` directory
+2. Copy the contents of the `config` directory to the `$HOME/.config` directory
+
