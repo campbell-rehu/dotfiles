@@ -1,6 +1,32 @@
 local formatters = require("lvim.lsp.null-ls.formatters")
 
-lvim.plugins = {
+local function deepMergeTables(tables)
+	local mergedTable = {}
+
+	local function mergeInto(dest, src)
+		for key, value in pairs(src) do
+			if type(value) == "table" then
+				-- If the value is a table, then merge it recursively
+				if type(dest[key]) ~= "table" then
+					dest[key] = {}
+				end
+				mergeInto(dest[key], value)
+			else
+				-- Otherwise, simply set the value
+				dest[key] = value
+			end
+		end
+	end
+
+	-- Iterate through each table in the collection
+	for _, tbl in ipairs(tables) do
+		mergeInto(mergedTable, tbl)
+	end
+
+	return mergedTable
+end
+
+local plugins = {
 	{
 		"shaunsingh/nord.nvim",
 	},
@@ -34,27 +60,51 @@ lvim.plugins = {
 	},
 }
 
+lvim.format_on_save.enabled = true
 lvim.colorscheme = "catppuccin-macchiato"
 
-formatters.setup({
+local defaultFormatters = {
 	{ name = "stylua" },
 	{ name = "prettier" },
 	{ name = "beautysh" },
-})
+}
 
-lvim.format_on_save.enabled = true
-
--- ##### Key Mappings #####
--- lazygit key mappings
-lvim.builtin.which_key.mappings["g"] = {
+local defaultMappings = {
 	["g"] = {
-		"<cmd>:LazyGit<CR>",
-		"Open LazyGit in a floating buffer",
+		["g"] = {
+			"<cmd>:LazyGit<CR>",
+			"Open LazyGit in a floating buffer",
+		},
+	},
+	["trf"] = {
+		'<cmd>lua require("jester").run({ terminal_cmd = ":ToggleTerm" })<CR>',
+		"Run tests in current file",
 	},
 }
 
--- jester key mappings
-lvim.builtin.which_key.mappings["trf"] = {
-	'<cmd>lua require("jester").run({ terminal_cmd = ":ToggleTerm" })<CR>',
-	"Run tests in current file",
-}
+local allDefaultMappings = deepMergeTables({ lvim.builtin.which_key.mappings, defaultMappings })
+
+local customPlugins = {}
+local customLvimConfig = {}
+local customWhichKeyMappings = {}
+local customFormatters = {}
+
+-- Retrieve custom config from custom-config module
+local status, customConfig = pcall(require, "custom-config")
+if status then
+	customPlugins = customConfig.plugins
+	customFormatters = customConfig.formatters
+	customWhichKeyMappings = customConfig.whichKeyMappings
+	customLvimConfig = customConfig.customLvimConfig
+end
+
+-- Merge default lvim config with any customLvimConfig
+local allLvimConfig = deepMergeTables({ lvim, customLvimConfig })
+-- Merge default plugins with any customPlugins
+allLvimConfig.plugins = deepMergeTables({ plugins, customPlugins })
+-- Merge default which_key mappings with any custom which_key mappings
+allLvimConfig.builtin.which_key.mappings = deepMergeTables({ allDefaultMappings, customWhichKeyMappings })
+-- Merge default formatters with any custom formatters
+formatters.setup(deepMergeTables({ defaultFormatters, customFormatters }))
+
+lvim = allLvimConfig
