@@ -26,7 +26,7 @@ local function deepMergeTables(tables)
 	return mergedTable
 end
 
-local plugins = {
+lvim.plugins = {
 	{
 		"shaunsingh/nord.nvim",
 	},
@@ -69,20 +69,19 @@ local defaultFormatters = {
 	{ name = "beautysh" },
 }
 
-local defaultMappings = {
+lvim.builtin.which_key.mappings["g"] = {
 	["g"] = {
-		["g"] = {
-			"<cmd>:LazyGit<CR>",
-			"Open LazyGit in a floating buffer",
-		},
+		"<cmd>:LazyGit<CR>",
+		"Open LazyGit in a floating buffer",
 	},
-	["trf"] = {
+}
+
+lvim.builtin.which_key.mappings["t"] = {
+	["rf"] = {
 		'<cmd>lua require("jester").run({ terminal_cmd = ":ToggleTerm" })<CR>',
 		"Run tests in current file",
 	},
 }
-
-local allDefaultMappings = deepMergeTables({ lvim.builtin.which_key.mappings, defaultMappings })
 
 local customPlugins = {}
 local customLvimConfig = {}
@@ -100,10 +99,13 @@ end
 
 -- Merge default lvim config with any customLvimConfig
 local allLvimConfig = deepMergeTables({ lvim, customLvimConfig })
+
 -- Merge default plugins with any customPlugins
-allLvimConfig.plugins = deepMergeTables({ plugins, customPlugins })
+allLvimConfig.plugins = deepMergeTables({ lvim.plugins, customPlugins })
+
 -- Merge default which_key mappings with any custom which_key mappings
-allLvimConfig.builtin.which_key.mappings = deepMergeTables({ allDefaultMappings, customWhichKeyMappings })
+allLvimConfig.builtin.which_key.mappings = deepMergeTables({ lvim.builtin.which_key.mappings, customWhichKeyMappings })
+
 -- Merge default formatters with any custom formatters
 formatters.setup(deepMergeTables({ defaultFormatters, customFormatters }))
 
