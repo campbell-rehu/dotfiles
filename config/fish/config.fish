@@ -10,5 +10,5 @@ alias refresh-fish="source ~/.config/fish/config.fish"
 
 set -U fish_greeting
 
-# Uncomment the following line and create a custom-config.fish file for additional fish config options
-# source ~/.config/fish/custom-config.fish
+# Use the custom-config.fish file for additional fish config options
+source ~/.config/fish/custom-config.fish
