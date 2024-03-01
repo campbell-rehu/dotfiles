@@ -12,3 +12,5 @@ set -U fish_greeting
 
 # Use the custom-config.fish file for additional fish config options
 source ~/.config/fish/custom-config.fish
+
+zoxide init fish | source
