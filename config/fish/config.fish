@@ -14,3 +14,4 @@ set -U fish_greeting
 source ~/.config/fish/custom-config.fish
 
 zoxide init fish | source
+fzf --fish | source
