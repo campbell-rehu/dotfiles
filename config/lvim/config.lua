@@ -28,9 +28,6 @@ end
 
 lvim.plugins = {
 	{
-		"shaunsingh/nord.nvim",
-	},
-	{
 		-- options: catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 		"catppuccin/nvim",
 		name = "catppuccin",
