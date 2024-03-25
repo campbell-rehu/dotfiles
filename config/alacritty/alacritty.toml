@@ -11,26 +11,19 @@ live_config_reload = true
 [window]
 decorations = "Full"
 dynamic_padding = false
-opacity = 1 
+opacity = 1
+option_as_alt = "OnlyLeft"
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 10.0
+size = 14.0
 
 [font.bold]
-family = "Comic Code Ligatures"
-style = "Heavy"
-
-[font.bold_italic]
-family = "Comic Code Ligatures"
-style = "Heavy Italic"
-
-[font.italic]
-family = "Comic Code Ligatures"
-style = "Medium Italic"
+family = "ComicShannsMono Nerd Font Mono"
+style = "Bold"
 
 [font.normal]
-family = "Comic Code Ligatures"
-style = "Medium"
+family = "ComicShannsMono Nerd Font Mono"
+style = "Regular"
