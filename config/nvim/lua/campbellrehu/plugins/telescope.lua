@@ -5,7 +5,8 @@ return {
     "nvim-lua/plenary.nvim", 
     "nvim-treesitter/nvim-treesitter",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
+    "folke/todo-comments.nvim"
   },
   config = function()
     local telescope = require("telescope")
@@ -34,6 +35,7 @@ return {
     helpers.generateKeymap("n", "<leader>fh", builtin.help_tags, "[F]ind [H]elp")
     helpers.generateKeymap("n", "<leader>fk", builtin.keymaps, "[F]ind [K]eymap")
     helpers.generateKeymap("n", "<leader>fc", builtin.grep_string, "[F]ind string under [C]ursor")
+    helpers.generateKeymap("n", "<leader>fd", "<cmd>TodoTelescope<CR>", "[F]ind TO[D]Os")
 
   end
 }
