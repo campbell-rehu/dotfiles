@@ -10,9 +10,18 @@ return {
   },
   config = function()
     local telescope = require("telescope")
+    local telescope_config = require("telescope.config")
     local builtin = require("telescope.builtin")
     local actions = require("telescope.actions")
     local helpers = require("campbellrehu.core.helpers")
+    local vimgrep_arguments = { unpack(telescope_config.values.vimgrep_arguments) }
+
+    -- search hidden files and follow symbolic links. source=https://mischavandenburg.com/zet/neovim-telescope-follow-symlinks/
+    table.insert(vimgrep_arguments, "--hidden")
+    table.insert(vimgrep_arguments, "--glob")
+    table.insert(vimgrep_arguments, "!**/.git/*")
+    table.insert(vimgrep_arguments, "-L")
+
 
     telescope.setup({
       defaults = {
@@ -23,7 +32,13 @@ return {
             ["<C-j>"] = actions.move_selection_next,
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
           }
-        }
+        },
+        vimgrep_arguments = vimgrep_arguments,
+      },
+      pickers = {
+        find_files = {
+          find_command = {"rg", "--files", "--hidden", "--glob", "!**/.git/*", "-L"}
+        },
       }
     })
 
