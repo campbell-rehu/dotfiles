@@ -7,7 +7,7 @@ helpers.generateKeymap("n", "<leader>nh", ":nohl<CR>", "Clear search highlights"
 helpers.generateKeymap("n", "<leader>sv", "<C-w>v", "Split window vertically")
 helpers.generateKeymap("n", "<leader>sh", "<C-w>s", "Split window horizontally")
 helpers.generateKeymap("n", "<leader>se", "<C-w>=", "Make splits equal size")
-helpers.generateKeymap("n", "<leader>sx", "<cmd>close<CR>", "Close current split")
+helpers.generateKeymap("n", "<leader>x", "<cmd>close<CR>", "Close current split")
 
 -- tab management
 helpers.generateKeymap("n", "<leader>to", "<cmd>tabnew<CR>", "Open new tab")
