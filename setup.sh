@@ -1,3 +1,4 @@
+#!/bin/bash
 CUSTOM_CONFIG_FILE_PATHS=($PWD/config/lvim/custom-config.lua $PWD/config/fish/custom-config.fish $PWD/config/alacritty/custom.toml)
 
 if [[ $# -ge 1 ]]; then
