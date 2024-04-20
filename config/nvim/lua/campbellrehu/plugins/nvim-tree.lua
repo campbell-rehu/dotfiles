@@ -13,8 +13,9 @@ return {
 
     nvimtree.setup({
       view = {
-        width = 35,
-        relativenumber = true
+        width = 70,
+        relativenumber = true,
+        side = "right"
       },
       renderer = {
         indent_markers = {
@@ -37,7 +38,7 @@ return {
         },
       },
       git = {
-        ignore = false, 
+        ignore = false
       },
     })
     local helpers = require("campbellrehu.core.helpers")
