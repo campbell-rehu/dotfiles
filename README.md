@@ -2,13 +2,12 @@
 
 Repository for storing my configuration dotfiles
 
-# Required tools
+# Tools
 
-- [Kitty Terminal](https://sw.kovidgoyal.net/kitty/)
-- [fish shell](https://fishshell.com/)
+- [Alacritty](https://alacritty.org/)
 - [tmux](https://github.com/tmux/tmux)
+- [fish shell](https://fishshell.com/)
 - [Neovim](https://github.com/neovim/neovim)
-- [LunarVim](https://www.lunarvim.org/)
 
 # How to use
 
