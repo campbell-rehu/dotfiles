@@ -1,0 +1,23 @@
+# change the focused window
+ctrl + alt - j: yabai -m window --focus south
+ctrl + alt - k: yabai -m window --focus north 
+ctrl + alt - h: yabai -m window --focus west 
+ctrl + alt - l: yabai -m window --focus east 
+
+# rotate layout clockwise
+ctrl + alt - r : yabai -m space --rotate 270
+
+# flip along y-axis
+ctrl + alt - y : yabai -m space --mirror y-axis
+
+# flip along x-axis
+ctrl + alt - x : yabai -m space --mirror x-axis
+
+# toggle window float
+ctrl + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# maximise a window (across x or y axis depending on layout) (0x24 is the keycode for the return key)
+ctrl + alt - 0x24 : yabai -m window --toggle zoom-parent
+
+# maximise a window (fullscreen) (0x24 is the keycode for the return key)
+ctrl + alt + shift - 0x24 : yabai -m window --toggle zoom-fullscreen
