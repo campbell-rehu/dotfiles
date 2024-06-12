@@ -22,4 +22,6 @@ yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Kap$" manage=off
 yabai -m rule --add app="^Notes$" manage=off
 yabai -m rule --add app="^OBS$" manage=off
+yabai -m rule --add app="^Mail$" manage=off
+yabai -m rule --add app="^Messages$" manage=off
 
