@@ -3,7 +3,7 @@ if status is-interactive
     bass source ~/.cargo/env
 end
 
-alias edit-fish="lvim ~/.config/fish/config.fish"
+alias edit-fish="nvim ~/.config/fish/config.fish"
 alias refresh-fish="source ~/.config/fish/config.fish"
 set -U fish_greeting
 set -g fish_key_bindings fish_vi_key_bindings
