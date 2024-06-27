@@ -5,7 +5,7 @@ local opt = vim.opt
 opt.relativenumber = true -- show relative line numbers in left margin
 opt.number = true -- show absolute line number where cursor is
 
-opt.tabstop = 2 -- 2 spaces for tebas
+opt.tabstop = 2 -- 2 spaces for tabs
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
