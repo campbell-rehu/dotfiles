@@ -23,4 +23,5 @@ yabai -m rule --add app="^Notes$" manage=off
 yabai -m rule --add app="^OBS$" manage=off
 yabai -m rule --add app="^Mail$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
 
